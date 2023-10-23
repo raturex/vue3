@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 - 03 - challenge</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <div id="app">
+       
+      <!--<component-loc/>-->
+      <component-inc/>
+    </div>
+    <script>
+
+         const compteurGlobal = {
+            data(){
+              return {
+                  number : 0
+              }
+          },
+          template : '<div><button  @click="number++">{{number}}</button></div>'
+
+         }
+
+         const componentIncr = {
+            data(){
+              return{
+                nombre : 0
+              }
+            },
+            template: '<div><button  @click="randomize">afficher nombre </button>{{nombre}}</div>',
+            
+            methods: {
+              randomize ( ) {
+                this.nombre = Math.floor(Math.random()*100 +1)
+              }
+            },
+        };
+        app = Vue.createApp({
+
+          components : {
+            'component-inc' : componentIncr
+          }
+         
+       });
+       
+       app.mount('#app');
+       
+    </script>
+  </body>
+</html>

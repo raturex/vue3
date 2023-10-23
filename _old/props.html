@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 - 05</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <div id="app">
+       <local name="Jean"></local>
+       <local name="Pierre"></local>
+       <local name="Emma"></local>
+    </div>
+    <script>
+
+        const grettings  = {
+            template: '<h2> Bonjour {{name}} </h2>',
+            props : ['name']
+        }
+        app = Vue.createApp({
+          
+            components : {
+                'local' : grettings
+            }
+        });
+
+        app.component()
+            
+       app.mount('#app');
+       
+    </script>
+  </body>
+</html>

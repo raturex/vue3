@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet2-05</title>
+</head>
+<body>
+    <div id="app">
+        <taille param="grand"></taille>
+
+        <bonjour prenom="jean"></bonjour>
+        <bonjour prenom="philippe"></bonjour>
+        <bonjour prenom="arnaud"></bonjour>
+        
+        
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+ 
+<script type="text/javascript">
+
+    const app =  Vue.createApp({
+      
+        data() {
+            return {
+                
+            }
+        },
+    })
+    app.component('taille',{
+        template : "<h1>La taille est : {{param}}</h1>",
+        props : ['param']
+    });
+
+
+    app.component('bonjour',{
+        template : "<div> Bonjour {{prenom}}</div>",
+        props : ['prenom']
+    });
+
+  
+    app.mount('#app')
+</script>
+</html>

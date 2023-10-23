@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1-01</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> 
+        <p>Quels sont les langages que vous maitrisez ?</p>
+        <input type="text" v-model="value" />
+        <button type="button" @click="addLanguage">Valider</button>
+        <br>
+        <ul>
+          <li v-for="(language,index) in languages">{{index}} - {{language}} &nbsp; <a href="" style="color:red" @click.prevent="deleteLanguage(index)">delete</a></li>
+        </ul>
+    </div>
+    <script>
+        app = Vue.createApp({
+         data() {
+            return{
+              value:'',
+              languages: []
+            }
+         },
+
+         methods : {
+            addLanguage()
+            {
+              this.languages.push(this.value)
+            },
+            deleteLanguage(index)
+            {
+              
+             this.languages.splice(index,1)
+            }
+         }
+
+       });
+       app.mount('#app');
+       
+    </script>
+</body>
+</html>

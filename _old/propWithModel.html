@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 - 05</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    <div id="app">
+       <maj texte="Ce texte est à mettre en majuscule"></maj>
+    </div>
+    <script>
+
+        const app = Vue.createApp({
+        });
+
+        app.component('maj',{
+          template : '<div>{{enMaj}}</div>',
+          props : ['texte'],
+          data(){
+            return {
+              enMaj : this.texte.toUpperCase()
+            }
+          }
+        });
+            
+       app.mount('#app');
+       
+    </script>
+  </body>
+</html>

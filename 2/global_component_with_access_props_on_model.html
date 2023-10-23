@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet2-06</title>
+</head>
+<body>
+    <div id="app">
+        <mise_a_jour texte="la formation vue js "></mise_a_jour>
+        
+        <random max="10"></random>
+        <random max="100"></random>
+        <random max="1000"></random>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+ 
+<script type="text/javascript">
+
+    const app =  Vue.createApp({
+    })
+
+    app.component('mise_a_jour',{
+        template : "<div>{{text}}</div>",
+        props : ['texte'],
+        data() {
+            return {
+                text : this.texte.toUpperCase()
+            }
+        }
+    });
+
+    app.component('random',{
+        template : "<div>{{value}}</div>",
+        props : ['max'],
+        data() {
+            return {
+                value : Math.floor(Math.random() * this.max +1)
+            }
+        }
+    });
+
+    app.mount('#app')
+</script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet2-08</title>
+</head>
+<body>
+    <div id="app">
+        <bonjour @sayHello="direBonjour"></bonjour>
+        <br/>
+
+        <span>********************************</span>
+        <br>
+        {{total}}
+        <compteur @increment="plusUn"></compteur>
+        <compteur @increment="plusUn"></compteur>
+        <compteur @increment="plusUn"></compteur>
+
+        
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+ 
+<script type="text/javascript">
+
+    const app =  Vue.createApp({
+      
+        data() {
+            return {
+                total : 0
+            }
+        },
+        methods: {
+            direBonjour(){
+                alert('Le parent dit bonjour')
+            },
+            plusUn(){
+                this.total++
+            }
+        },
+    })
+    app.component('bonjour',{
+        template : '<button @click="$emit(\'sayhello\')" >Cliquez ici</button>'
+    });
+
+    app.component('compteur',{
+        data() {
+            return {
+                cpt : 0
+            }
+        },
+        methods : {
+            incrementer(){
+                this.cpt++;
+                this.$emit('increment')
+            }
+        },
+        template : '<button @click="incrementer">{{cpt}}</button>'
+    });
+
+
+   
+    app.mount('#app')
+</script>
+</html>

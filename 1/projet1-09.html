@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1-01</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> 
+      
+      <div @keydown="actionParent">
+        <input type="text" @keydown="action($event)" />
+        <br>
+        <a href="https://google.fr">Lien Google</a> <br>
+        <a href="https://bing.fr" @click="actionLink($event)">Lien bing</a>
+        <br><br>
+        <img v-bind:src="imageSrc" v-bind:height="defaultHeight" 
+        @click.left="hauteur(400)" 
+        @click.right="hauteur(200)"
+        
+         />
+      </div>
+    </div>
+    <script>
+        app = Vue.createApp({
+         data() {
+            return{
+              imageSrc:"https://vuejs.org/images/logo.png",
+              defaultHeight:300
+            }
+         },
+
+         methods : {
+          action(event){
+           console.log("evenement traité dans le input");
+           //event.preventDefault();
+          // event.stopPropagation();
+           
+          },
+          actionParent(){
+           console.log("evenement traité dans le parent");
+           
+          },
+          actionLink(event){
+            // event.preventDefault();
+          }
+          ,
+          hauteur(value){
+            this.defaultHeight = value
+          }
+         }
+
+       });
+       app.mount('#app');
+       
+    </script>
+</body>
+</html>

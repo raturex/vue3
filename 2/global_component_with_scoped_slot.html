@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet2-01</title>
+</head>
+<body>
+    <div id="app">
+        
+        <employes>
+            <template v-slot="scopePerson">
+                 {{scopePerson.person.nom.toUpperCase()}}
+                 &nbsp;
+                 {{scopePerson.person.prenom}}
+            </template>
+        </employes>
+       
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+ 
+<script type="text/javascript">
+
+    const app =  Vue.createApp({
+      
+        data() {
+            return {
+                
+            }
+        },
+    })
+    app.component('employes',{
+        data() {
+            return {
+                "personnes" : [
+                    {
+                        "nom": "Dupont",
+                        "prenom":"Jean",
+                    },
+                    {
+                        "nom":"Doe",
+                        "prenom":"John"
+                    }
+                ]
+            }
+        },
+        template : ` <div v-for="personne in personnes">
+                        <slot :person=personne></slot>
+                        
+                    </div>`
+    });
+
+   
+
+    app.mount('#app')
+</script>
+</html>

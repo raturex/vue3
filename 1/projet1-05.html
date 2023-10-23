@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1-01</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> 
+       <input type="text" v-model="nom" placeholder="Entrez le nom"/>
+      Bonjour {{nom}} 
+      <br><br>
+      <select name="liste" v-model="choix">
+        <option value="Abidjan">Abidjan</option>
+        <option value="Yakro">Yakro</option>
+        <option value="Bouna">Bouna</option>
+      </select>
+      <p>Vous avez choisit la ville : {{choix}}</p>
+      <br><br>
+
+      <textarea v-model="content"></textarea>
+      <div style="white-space: pre-line;">{{content}}</div>
+
+      <br><br>
+
+      <input type="text" v-model="text1" v-on:keyup="recopier" />
+      <input type="text" v-bind:value="text2"  />
+    </div>
+    <script>
+        app = Vue.createApp({
+         data() {
+            return{
+               nom : '  ',
+               choix:'',
+               content: '',
+               text1 : '',
+               text2 : ''
+            }
+         },
+
+         methods : {
+
+            recopier() {
+                 this.text2 = this.text1.toUpperCase();
+            }
+         }
+
+       });
+       app.mount('#app');
+       
+    </script>
+</body>
+</html>

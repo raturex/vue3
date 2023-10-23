@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1-01</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .red {color: red;}
+      .gras {
+        font-weight: bolder;
+      }
+      .ital  {
+        font-style: italic;
+      }
+
+      .under{
+        text-decoration: underline black 2px;
+      }
+    </style>
+</head>
+<body>
+    <div id="app"> 
+        <p>Quels sont les langages que vous maitrisez ?</p>
+        <input type="text" v-model="value" />
+        <button type="button" @click="addLanguage">Valider</button>
+        <br><br>
+
+        <div v-for="(language,index) in languages">
+          <input type="checkbox" v-model="language.checked" >
+          <label >{{language.valeur}} <span v-if="language.checked"> est coché</span> <span v-else> est décoché</span></label>
+        </div>
+        
+       
+    </div>
+    <script>
+        app = Vue.createApp({
+         data() {
+            return{
+              value:'',
+              languages: [],
+              gras : false,
+              italique : false,
+              under : false
+            }
+         },
+
+         methods : {
+            addLanguage()
+            {
+              this.languages.push({valeur : this.value , checked : false})
+            },
+            
+         }
+
+       });
+       app.mount('#app');
+       
+    </script>
+</body>
+</html>

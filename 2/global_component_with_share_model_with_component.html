@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet2-07</title>
+</head>
+<body>
+    <div id="app">
+        <taille v-bind:mess=message></taille>
+        <test/>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+ 
+<script type="text/javascript">
+
+    const app =  Vue.createApp({
+      
+        data() {
+            return {
+                message : "Message du parent au composant taille"
+            }
+        },
+    })
+    app.component('taille',{
+        template : "<div>{{mess}}</div>",
+        props : ['mess']
+    });
+
+    app.mount('#app')
+</script>
+</html>

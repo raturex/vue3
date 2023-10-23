@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1-01</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> 
+      <span><input type="radio" value="click" v-model="choix" checked > <label>click</label></span> &nbsp;
+      <span><input type="radio" value="dblclick" v-model="choix" > <label>Double click</label></span> &nbsp;
+      
+      <br>
+      <img v-bind:src="imageSrc" v-bind:height="defaultHeight" @[choix]="modifierTaille" >
+
+      <ul>
+        <li v-for="(person) in persons">{{person.nom}} {{person.prenom}} {{person.age}}</li>
+      </ul>
+    </div>
+    <script>
+        app = Vue.createApp({
+         data() {
+            return{
+              imageSrc:"https://vuejs.org/images/logo.png",
+              defaultHeight : 200,
+              choix:'click',
+              persons : [ {prenom:"loli",nom:"lolage",age:15},
+                          {prenom:"jp",nom:"KOBLAN",age:25},
+                          {prenom:"John",nom:"Doe",age:35},
+                        ]
+            }
+         },
+
+         methods : {
+            modifierTaille()
+            {
+              this.defaultHeight = this.defaultHeight * 1.1
+            },
+           
+         }
+
+       });
+       app.mount('#app');
+       
+    </script>
+</body>
+</html>

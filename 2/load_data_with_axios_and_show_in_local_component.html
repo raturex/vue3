@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet2-01</title>
+</head>
+<body>
+    <div id="app">
+       <table>
+         <all persons=users></all>
+       </table>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+ 
+<script type="text/javascript">
+
+    const One = {
+        props : ['personne'],
+        template : `<td>
+                        <img :src="person.picture.large"/>
+                    </td>
+                    <td>
+                        {{person.name.first}}  {{person.name.last}} 
+                        <br>
+                        {{person.email}} <br>
+                        {{person.phone}}
+                    </td>
+                    `
+    }
+
+    const All = {
+        template : `<tr v-for="person in persons">
+                        <one personne=person></one>
+                    </tr>
+                    `,
+        props: ['persons'],
+        components : {'one': One}
+    }
+
+    const app =  Vue.createApp({
+      
+        data() {
+            return {
+               users : [] 
+            }
+        },
+        created() {
+            
+            axios.get('https://randomuser.me/api/?results=3').then( (response) =>{
+                console.log(response.data.results);
+                 this.users = response.data.results;
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        },
+        components : {
+            'all' : All
+        }
+    })
+   
+   app.mount('#app')
+  
+</script>
+</html>

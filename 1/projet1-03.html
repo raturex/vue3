@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1-01</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> 
+         <h2>
+            {{myString.split('').reverse().join('')}}
+         </h2>
+         <h2>
+            {{subTite.toUpperCase()}}
+         </h2>
+         <h3>
+            {{inter == true ? "Vrai" : "Faux"}}
+            {{calcul}}
+            
+         </h3>
+         <p> Heure fr : {{dateFr}}</p>
+         <p> Heure en : {{dateUS}}</p>
+    </div>
+    <script>
+       const app = Vue.createApp({
+         data() {
+            return{
+                myString : "Ma première app",
+                subTite : "Test",
+                inter : "true",
+                numero : 15,
+                date : new Date()
+            }
+         },
+         computed : {
+            calcul() {
+                return this.numero *2
+            },
+            dateFr() {
+                return this.date.toLocaleTimeString();
+            },
+            dateUS() {
+                return this.date.toLocaleTimeString('en-US');
+            }
+         }
+       });
+       app.mount('#app');
+    </script>
+</body>
+</html>

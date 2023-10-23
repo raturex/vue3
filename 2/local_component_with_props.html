@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet2-05</title>
+</head>
+<body>
+    <div id="app">
+        
+        <bonjour-loc nom="Jean"></bonjour-loc>
+        <bonjour-loc nom="Philippe"></bonjour-loc>
+        <bonjour-loc nom="Arnaud"></bonjour-loc>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+ 
+<script type="text/javascript">
+
+    const BonjourLocal = {
+        template : '<div> Bonjour {{nom}} </div>',
+        props : ['nom']
+    }
+
+    const app =  Vue.createApp({
+      components : {
+            'bonjour-loc' : BonjourLocal,
+      }
+    })
+   
+    app.mount('#app')
+</script>
+</html>

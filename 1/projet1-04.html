@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1-01</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app"> 
+         <img v-bind:src="url"/>
+         <p :id="id">Ici le texte</p>
+         <p v-text="textBrut"></p>
+         <p v-html="textHtml"></p>
+         <p>Nom : <span v-text="person.nom"></span></p>
+         <p>Prenoms : <span v-text="person.prenom"></span></p>
+         <p>Age : <span v-text="person.age"></span></p>
+         <p>{{date}}</p>
+    </div>
+    <script>
+        app = Vue.createApp({
+         data() {
+            return{
+               url : "https://vuejs.org/images/logo.png",
+               id : "perso",
+               textBrut : "Un simple text",
+               textHtml : '<font color="red"> un texte html</font>',
+               person : {
+                nom : 'John',
+                prenom : 'Doe',
+                age : 34
+
+               },
+               date : ""
+            }
+         },
+
+       });
+       const vm = app.mount('#app');
+       setTimeout(()=>{
+        vm.person.age = 50;
+       },3000)
+
+       setInterval(()=>{
+        vm.date = new Date().toLocaleTimeString();
+       },1000)
+    </script>
+</body>
+</html>

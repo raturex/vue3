@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet2-02</title>
+</head>
+<body>
+    <div id="app">
+        <bonjour-loc></bonjour-loc>
+        <bonjour-jp/>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+ 
+<script type="text/javascript">
+
+    const BonjourLocal = {
+        template : '<div> Le composant local dit bonjour </div>'
+    }
+
+    const BonjourJp = {
+        template : '<div> Bonjour Jp  <component-local/></div>',
+        components : {
+            'component-local' : BonjourLocal
+        }
+
+    }
+    const app =  Vue.createApp({
+      components : {
+            'bonjour-loc' : BonjourLocal,
+            'bonjour-jp' : BonjourJp
+      }
+    })
+   
+    app.mount('#app')
+</script>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projet2-03</title>
+</head>
+<body>
+    <div id="app">
+        <rnd-local></rnd-local>
+
+        <span> ******incrémentation***** </span>
+        <increment/>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+ 
+<script type="text/javascript">
+
+    const RndLocal = {
+       data() {
+        return {
+            nombre : Math.floor(Math.random()*100 + 1)
+        }
+       },
+
+       template : '{{nombre}} <br/>'
+    }
+
+    const Increment = {
+       data() {
+        return {
+            number : 0,
+            rand_number : 0
+        }
+       },
+       template : `è<br/><button @click="number++">{{number}}</button> <br/>
+                    <button @click="decrement()">{{number}}</button> <br/>
+                    <button @click="randomValue()">rand value</button> <br/> {{rand_number}}`,
+        methods: {
+         
+          decrement(){
+             this.number--;
+          },
+          randomValue(){
+            this.rand_number= Math.floor(Math.random()*100 + 1)
+          }
+       },
+    }
+    
+    const app =  Vue.createApp({
+      components : {
+            'rnd-local' : RndLocal,
+            'increment' : Increment
+        }
+    })
+   
+    app.mount('#app')
+</script>
+</html>
